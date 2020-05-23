@@ -50,7 +50,7 @@ def send_email():
             data = json.load(f)
 
         # set up the SMTP server
-        s = smtplib.SMTP(host='smtp-mail.outlook.com', port=587)
+        s = smtplib.SMTP(host=SMTP_SERVER, port=PORT_SMTP_SERVER)
         s.starttls()
         s.login(MY_EMAIL_ADDRESS, MY_EMAIL_PASSWORD)
 
