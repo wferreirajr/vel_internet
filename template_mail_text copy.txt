@@ -1,0 +1,15 @@
+Olá, ${PERSON_NAME}
+
+Abaixo as informações sobre a conexão.
+
+Internet da empresa: ${EMPRESA}
+IP Externo: ${IP_EXTERNO}
+
+Jitter: ${JITTER} /ms
+Latency: ${LATENCIA} /ms
+
+Download: ${DOWNLOAD} Mbps
+Upload: ${UPLOAD} Mbps
+
+Att,
+Equipe de Técnologia
