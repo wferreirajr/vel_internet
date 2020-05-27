@@ -102,8 +102,7 @@ def main():
 # INICIALIZACAO
 if __name__ == "__main__":
     print('Inicio do teste de velocidade')
-    #main()
-    #send_email()
+
     # VARIAVEIS
     var_argparse = argparse.ArgumentParser()
     var_argparse.add_argument('--user-auth', '-u', help='Digite o email para se autenticar')
