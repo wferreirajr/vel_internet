@@ -8,6 +8,7 @@ import smtplib
 import subprocess
 import json
 import os
+import argparse
 
 from string import Template
 from email.mime.multipart import MIMEMultipart
@@ -15,16 +16,6 @@ from email.mime.text import MIMEText
 from os import path
 
 from getpass import getpass
-
-# VARIAVEIS
-MY_EMAIL_ADDRESS = input('Digite o usuário: ')
-MY_EMAIL_PASSWORD = getpass('Digite a senha: ')
-SMTP_SERVER = 'smtp-mail.outlook.com'
-PORT_SMTP_SERVER = 587
-SUBJECT_EMAIL = 'STATUS VELOCIDADE INTERNET'
-ARQUIVO_MODELO = 'template_mail.html'
-ARQUIVO_CONTATOS = 'mycontacts.txt'
-FILE_JSON = 'speedtest.json'
 
 # FUNCOES
 def read_file_template(filename):
@@ -111,5 +102,28 @@ def main():
 # INICIALIZACAO
 if __name__ == "__main__":
     print('Inicio do teste de velocidade')
-    main()
+    #main()
     #send_email()
+    # VARIAVEIS
+    var_argparse = argparse.ArgumentParser()
+    var_argparse.add_argument('--user-auth', '-u', help='Digite o email para se autenticar')
+    var_argparse.add_argument('--password-auth', '-p', help='Digite a senha')
+    var_argparse.add_argument('--smtp-server', '-s', help='Endereço do servidor SMTP')
+    var_argparse.add_argument('--port-smtp-server', '-ps', help='Porta do servidor SMTP')
+    var_argparse.add_argument('--subject', '-sub', help='Titulo para email')
+    var_argparse.add_argument('--file-template', '-f', help='Caminho para o arquivo modelo do email html')
+    var_argparse.add_argument('--file-contact', '-ft', help='Caminho para o arquivo dos contatos')
+    var_argparse.add_argument('--file-out-json', help='Nome do arquivo json que será criado')
+    
+    args = var_argparse.parse_args()
+
+    MY_EMAIL_ADDRESS = args.user_auth #input()
+    MY_EMAIL_PASSWORD = args.password_auth #getpass()
+    SMTP_SERVER = args.smtp_server #'smtp-mail.outlook.com'
+    PORT_SMTP_SERVER = int(args.port_smtp_server) #587
+    SUBJECT_EMAIL = args.subject #'STATUS VELOCIDADE INTERNET'
+    ARQUIVO_MODELO = args.file_template #'template_mail.html'
+    ARQUIVO_CONTATOS = args.file_contact #'mycontacts.txt'
+    FILE_JSON = args.file_out_json #'speedtest.json'
+    
+    main()
