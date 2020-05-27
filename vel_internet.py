@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """
     DESCRIÇÃO: Testa velocidade da internet atravez do speedtest
 """
